@@ -4,6 +4,7 @@ namespace Winex01\BackpackMenu\Http\Controllers\Admin;
 
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Winex01\BackpackPermissionManager\Http\Controllers\Traits\UserPermissions;
 
 /**
  * Class MenuCrudController
@@ -19,6 +20,8 @@ class MenuCrudController extends CrudController
     use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\ReorderOperation;
 
+    use UserPermissions;
+
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
      *
@@ -30,8 +33,7 @@ class MenuCrudController extends CrudController
         CRUD::setRoute(config('backpack.base.route_prefix') . '/menu');
         CRUD::setEntityNameStrings('menu', 'menus');
 
-        // TODO:: add permission
-        // $this->userPermissions();
+        $this->userPermissions();
     }
 
     /**

@@ -3,7 +3,7 @@
 namespace Winex01\BackpackMenu;
 
 use Backpack\CRUD\ViewNamespaces;
-use Winex01\BackpackMenu\Traits\PublishesMigrations;
+use Winex01\BackpackMenu\Traits\PublishedFiles;
 
 /**
  * This trait automatically loads package stuff, if they're present
@@ -14,7 +14,7 @@ use Winex01\BackpackMenu\Traits\PublishesMigrations;
  */
 trait AutomaticServiceProvider
 {
-    use PublishesMigrations;
+    use PublishedFiles;
 
     /**
      * The src directory of the add-on.
@@ -143,7 +143,10 @@ trait AutomaticServiceProvider
         }
 
         // publish migrations
-        $this->registerMigrations(__DIR__ . '/../database/migrations');
+        $this->publishMigrations(__DIR__ . '/../database/migrations');
+
+        // publish seeders
+        $this->publishSeeders($this->path . '/database/seeders');
 
         // Registering package commands.
         if (!empty($this->commands)) {

@@ -5,7 +5,7 @@ namespace Winex01\BackpackMenu\Traits;
 use Generator;
 use Illuminate\Support\Str;
 
-trait PublishesMigrations
+trait PublishedFiles
 {
     /**
      * Searches migrations and publishes them as assets.
@@ -14,7 +14,7 @@ trait PublishesMigrations
      *
      * @return void
      */
-    protected function registerMigrations(string $directory): void
+    protected function publishMigrations(string $directory): void
     {
         if ($this->app->runningInConsole()) {
             $generator = function (string $directory): Generator {
@@ -26,6 +26,15 @@ trait PublishesMigrations
             };
 
             $this->publishes(iterator_to_array($generator($directory)), 'migrations');
+        }
+    }
+
+    protected function publishSeeders(string $directory): void
+    {
+        if ($this->packageDirectoryExistsAndIsNotEmpty('database/seeders')) {
+            $this->publishes([
+                $directory => base_path('database/seeders'),
+            ], 'seeders');
         }
     }
 }
