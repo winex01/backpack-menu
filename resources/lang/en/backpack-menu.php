@@ -7,7 +7,5 @@ return [
     | Winex01\BackpackMenu Translation Lines
     |--------------------------------------------------------------------------
     */
-
-    'something_to_translate'    => 'Something to translate',
-
+    'icon_hint' => '<a href="https://icons8.com/line-awesome" target="_blank">https://icons8.com/line-awesome</a>',
 ];

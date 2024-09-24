@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Winex01\BackpackMenu Routes
@@ -27,12 +29,14 @@
  * Admin Routes
  */
 
-// Route::group([
-//     'prefix' => config('backpack.base.route_prefix', 'admin'),
-//     'middleware' => array_merge(
-//         (array) config('backpack.base.web_middleware', 'web'),
-//         (array) config('backpack.base.middleware_key', 'admin')
-//     ),
-// ], function () {
-//     Route::crud('some-entity-name', \Winex01\BackpackMenu\Http\Controllers\Admin\EntityNameCrudController::class);
-// });
+Route::group([
+    'prefix' => config('backpack.base.route_prefix', 'admin'),
+    'middleware' => array_merge(
+        (array) config('backpack.base.web_middleware', 'web'),
+        (array) config('backpack.base.middleware_key', 'admin')
+    ),
+], function () {
+    Route::crud('menu', \Winex01\BackpackMenu\Http\Controllers\Admin\MenuCrudController::class);
+});
+
+
