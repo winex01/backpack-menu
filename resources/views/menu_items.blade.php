@@ -1,8 +1,6 @@
 @php
-    use Winex01\BackpackMenu\Models\Menu;
-
     // Fetch all menus (both main and submenus) in one query
-    $menus = Menu::orderBy('lft')->get()->groupBy('parent_id');
+    $menus = config('winex01.backpack-menu.model')::orderBy('lft')->get()->groupBy('parent_id');
     $mainMenus = $menus->get(null, collect()); // Menus without a parent (main menus)
 @endphp
 

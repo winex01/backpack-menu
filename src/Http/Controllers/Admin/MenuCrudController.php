@@ -2,7 +2,6 @@
 
 namespace Winex01\BackpackMenu\Http\Controllers\Admin;
 
-use Winex01\BackpackMenu\Models\Menu;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
@@ -27,7 +26,7 @@ class MenuCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(Menu::class); // TODO:: add class to config
+        CRUD::setModel(config('winex01.backpack-menu.model'));
         CRUD::setRoute(config('backpack.base.route_prefix') . '/menu');
         CRUD::setEntityNameStrings('menu', 'menus');
 

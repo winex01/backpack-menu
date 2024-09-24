@@ -2,5 +2,5 @@
 
 return [
     //
-    'test' => 'test123'
+    'model' => Winex01\BackpackMenu\Models\Menu::class,
 ];
