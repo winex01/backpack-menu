@@ -3,6 +3,7 @@
 namespace Winex01\BackpackMenu;
 
 use Backpack\CRUD\ViewNamespaces;
+use Winex01\BackpackMenu\Traits\PublishesMigrations;
 
 /**
  * This trait automatically loads package stuff, if they're present
@@ -13,6 +14,8 @@ use Backpack\CRUD\ViewNamespaces;
  */
 trait AutomaticServiceProvider
 {
+    use PublishesMigrations;
+
     /**
      * The src directory of the add-on.
      *
@@ -139,9 +142,7 @@ trait AutomaticServiceProvider
         }
 
         // publish migrations
-        $this->publishes([
-            $this->packageMigrationsPath() => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_menus_table.php'),
-        ], 'migrations');
+        $this->registerMigrations(__DIR__ . '/../database/migrations');
 
         // Registering package commands.
         if (!empty($this->commands)) {

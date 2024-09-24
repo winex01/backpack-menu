@@ -25,7 +25,6 @@ return new class extends Migration {
             $table->integer('depth')->unsigned()->nullable();
 
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
