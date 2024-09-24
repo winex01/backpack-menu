@@ -87,7 +87,7 @@ class MenuCrudController extends CrudController
         $this->crud->removeFields($this->removeDbColumn());
 
         $this->crud->modifyField('icon', [
-            'hint' => __('app.menu_icon_hint')
+            'hint' => __('winex01.backpack-menu::backpack-menu.icon_hint')
         ]);
 
         $this->crud->modifyField('permissions', [

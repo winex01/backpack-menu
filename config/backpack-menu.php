@@ -2,4 +2,5 @@
 
 return [
     //
+    'test' => 'test123'
 ];

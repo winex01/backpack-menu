@@ -80,9 +80,10 @@ trait AutomaticServiceProvider
             }
         }
 
-        if ($this->packageDirectoryExistsAndIsNotEmpty('database/migrations')) {
-            $this->loadMigrationsFrom($this->packageMigrationsPath());
-        }
+        // do not load, we require user to publish it.
+        // if ($this->packageDirectoryExistsAndIsNotEmpty('database/migrations')) {
+        //     $this->loadMigrationsFrom($this->packageMigrationsPath());
+        // }
 
         if ($this->packageDirectoryExistsAndIsNotEmpty('routes')) {
             $this->loadRoutesFrom($this->packageRoutesFile());
