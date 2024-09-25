@@ -24,6 +24,7 @@ composer require winex01/backpack-menu
 After installing [winex01/backpack-permission-manager](https://github.com/winex01/backpack-permission-manager), open RolesAndPermissionsSeeder.php and add this:
 
 ```php
+//RolesAndPermissionsSeeder.php
 protected $rolesAndPermissions = [
     // more arrays here...
 
@@ -36,6 +37,11 @@ protected $rolesAndPermissions = [
         'menus_reorder',
     ],
 ];
+```
+
+```php
+//menu_items.blade.php
+@include('winex01.backpack-menu::menu_items')
 ```
 
 ## migrations
